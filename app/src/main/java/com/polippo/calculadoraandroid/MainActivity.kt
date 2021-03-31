@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         val btnBack = findViewById<Button>(R.id.button_back)
         val btnResult = findViewById<Button>(R.id.button_result)
         val textViewInput = findViewById<TextView>(R.id.textView_input)
+
 
         number0.setOnClickListener {
             textViewInput.append(number0.text)
@@ -88,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             if(textViewInput.text.isNotBlank() && textViewInput.text.isNotEmpty()){
                 if(!textViewInput.text.endsWith(btnPlus.text) && !textViewInput.text.endsWith(btnMinus.text) && !textViewInput.text.endsWith(btnMultiplication.text)
                         && !textViewInput.text.endsWith(btnDivision.text))
-                    textViewInput.append(btnMultiplication.text)
+                    textViewInput.append("*")
             }
         }
 
@@ -97,6 +99,29 @@ class MainActivity : AppCompatActivity() {
                 if(!textViewInput.text.endsWith(btnPlus.text) && !textViewInput.text.endsWith(btnMinus.text) && !textViewInput.text.endsWith(btnMultiplication.text)
                         && !textViewInput.text.endsWith(btnDivision.text))
                     textViewInput.append(btnDivision.text)
+            }
+        }
+
+        btnBack.setOnClickListener {
+            if(textViewInput.text.isNotBlank() && textViewInput.text.isNotEmpty())
+            textViewInput.text = textViewInput.text.dropLast(1)
+        }
+
+        btnResult.setOnClickListener {
+            try{
+                val expression = ExpressionBuilder(textViewInput.text.toString()).build()
+                val result = expression.evaluate()
+                val resultLong = expression.evaluate().toLong()
+
+                if (result == resultLong.toDouble()){
+                    textViewInput.text = resultLong.toString()
+                } else{
+                    textViewInput.text = result.toString()
+                }
+
+
+            } catch (e: Exception){
+                textViewInput.text = getString(R.string.error)
             }
         }
     }
