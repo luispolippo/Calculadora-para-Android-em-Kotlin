@@ -14,7 +14,7 @@
     <string name="minus">-</string>
     <string name="equal">=</string>
     <string name="number0">0</string>
-    <string name="clear">C</string>
+    <string name="dot">.</string>
     <string name="plus">+</string>
     <string name="error">Algo errado aconteceu</string>
 </resources>
