@@ -67,5 +67,37 @@ class MainActivity : AppCompatActivity() {
         number9.setOnClickListener {
             textViewInput.append(number9.text)
         }
+
+        btnPlus.setOnClickListener {
+            if(textViewInput.text.isNotBlank() && textViewInput.text.isNotEmpty()){
+                if(!textViewInput.text.endsWith(btnPlus.text) && !textViewInput.text.endsWith(btnMinus.text) && !textViewInput.text.endsWith(btnMultiplication.text)
+                        && !textViewInput.text.endsWith(btnDivision.text))
+                textViewInput.append(btnPlus.text)
+            }
+        }
+
+        btnMinus.setOnClickListener {
+            if(textViewInput.text.isNotBlank() && textViewInput.text.isNotEmpty()){
+                if(!textViewInput.text.endsWith(btnPlus.text) && !textViewInput.text.endsWith(btnMinus.text) && !textViewInput.text.endsWith(btnMultiplication.text)
+                        && !textViewInput.text.endsWith(btnDivision.text))
+                    textViewInput.append(btnMinus.text)
+            }
+        }
+
+        btnMultiplication.setOnClickListener {
+            if(textViewInput.text.isNotBlank() && textViewInput.text.isNotEmpty()){
+                if(!textViewInput.text.endsWith(btnPlus.text) && !textViewInput.text.endsWith(btnMinus.text) && !textViewInput.text.endsWith(btnMultiplication.text)
+                        && !textViewInput.text.endsWith(btnDivision.text))
+                    textViewInput.append(btnMultiplication.text)
+            }
+        }
+
+        btnDivision.setOnClickListener {
+            if(textViewInput.text.isNotBlank() && textViewInput.text.isNotEmpty()){
+                if(!textViewInput.text.endsWith(btnPlus.text) && !textViewInput.text.endsWith(btnMinus.text) && !textViewInput.text.endsWith(btnMultiplication.text)
+                        && !textViewInput.text.endsWith(btnDivision.text))
+                    textViewInput.append(btnDivision.text)
+            }
+        }
     }
 }
